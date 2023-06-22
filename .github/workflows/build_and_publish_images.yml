@@ -1,5 +1,3 @@
-name: Build conductor images
-
 name: Conductor Build & publish images
 on: [ workflow_dispatch ]
 
