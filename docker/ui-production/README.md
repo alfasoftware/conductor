@@ -1,7 +1,3 @@
-# Docker
-## Conductor server and UI
-This Dockerfile create the conductor:serverAndUI image
-
 ## Building the image
 `docker build -t conductor:serverAndUI .`
 
