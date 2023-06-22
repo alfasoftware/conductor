@@ -14,7 +14,7 @@ jobs:
         include:
           - dockerfile: ./docker/server/Dockerfile
             image: ghcr.io/alfasoftware/conductor-server
-          - dockerfile: ./docker/ui/Dockerfile
+          - dockerfile: ./docker/ui-production/Dockerfile
             image: ghcr.io/alfasoftware/conductor-ui
     permissions:
       contents: read
