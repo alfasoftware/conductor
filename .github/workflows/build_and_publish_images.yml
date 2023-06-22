@@ -13,9 +13,9 @@ jobs:
       matrix:
         include:
           - dockerfile: ./docker/server/Dockerfile
-            image: ghcr.io/alfahub-internal-solutions/conductor-server
+            image: ghcr.io/alfasoftware/conductor-server
           - dockerfile: ./docker/ui/Dockerfile
-            image: ghcr.io/alfahub-internal-solutions/conductor-ui
+            image: ghcr.io/alfasoftware/conductor-ui
     permissions:
       contents: read
       packages: write
