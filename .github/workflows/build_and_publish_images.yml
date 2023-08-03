@@ -38,6 +38,8 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{ matrix.image }}
+          tags: |
+            type=raw,value={{date 'YYYYMMDD'}}
 
       - name: Build and push Docker images
         uses: docker/build-push-action@v3
