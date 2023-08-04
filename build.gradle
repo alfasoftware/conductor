@@ -39,6 +39,7 @@ plugins {
 
 // Establish version and status
 ext.githubProjectName = rootProject.name // Change if github project name is not the same as the root project's name
+project.version="3.13.8-alfasoftware"
 
 subprojects {
     tasks.withType(Javadoc).all { enabled = false }
