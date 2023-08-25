@@ -6,6 +6,7 @@ import sharedStyles from "../styles";
 import { Helmet } from "react-helmet";
 import AddIcon from "@material-ui/icons/Add";
 import { useTaskDefs } from "../../data/task";
+import ExcludeFromReadonlyUi from "../../components/ExcludeFromReadonlyUi";
 
 const useStyles = makeStyles(sharedStyles);
 
@@ -58,11 +59,13 @@ export default function TaskDefinitions() {
       <Header tabIndex={1} loading={isFetching} />
 
       <div className={classes.tabContent}>
-        <div className={classes.buttonRow}>
-          <Button component={NavLink} path="/taskDef" startIcon={<AddIcon />}>
-            New Task Definition
-          </Button>
-        </div>
+        <ExcludeFromReadonlyUi>
+          <div className={classes.buttonRow}>
+            <Button component={NavLink} path="/taskDef" startIcon={<AddIcon />}>
+              New Task Definition
+            </Button>
+          </div>
+        </ExcludeFromReadonlyUi>
 
         {tasks && (
           <DataTable

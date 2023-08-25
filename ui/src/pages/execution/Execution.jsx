@@ -29,6 +29,7 @@ import { Helmet } from "react-helmet";
 import sharedStyles from "../styles";
 import rison from "rison";
 import { useWorkflow } from "../../data/workflow";
+import ExcludeFromReadonlyUi from "../../components/ExcludeFromReadonlyUi";
 
 const maxWindowWidth = window.innerWidth;
 const INIT_DRAWER_WIDTH = 650;
@@ -227,7 +228,9 @@ export default function Execution() {
                 <SecondaryButton onClick={refresh} style={{ marginRight: 10 }}>
                   Refresh
                 </SecondaryButton>
-                <ActionModule execution={execution} triggerReload={refresh} />
+                <ExcludeFromReadonlyUi>
+                  <ActionModule execution={execution} triggerReload={refresh} />
+                </ExcludeFromReadonlyUi>
               </div>
               <Heading level={3} gutterBottom>
                 {execution.workflowType || execution.workflowName}{" "}

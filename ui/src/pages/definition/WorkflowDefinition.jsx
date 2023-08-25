@@ -28,6 +28,7 @@ import {
   KeyboardArrowLeftRounded,
   KeyboardArrowRightRounded,
 } from "@material-ui/icons";
+import ExcludeFromReadonlyUi, {READONLY_MODE_ENABLED} from "../../components/ExcludeFromReadonlyUi";
 
 const minCodePanelWidth = 500;
 const useStyles = makeStyles({
@@ -318,20 +319,21 @@ export default function Workflow() {
             )}
 
             <div className={classes.rightButtons}>
-              <Button
-                disabled={!_.isEmpty(jsonErrors) || !isModified}
-                onClick={handleOpenSave}
-              >
-                Save
-              </Button>
-              <Button
-                disabled={!isModified}
-                onClick={() => handleResetVersion(workflowVersion)}
-                variant="secondary"
-              >
-                Reset
-              </Button>
-
+              <ExcludeFromReadonlyUi>
+                <Button
+                    disabled={!_.isEmpty(jsonErrors) || !isModified}
+                    onClick={handleOpenSave}
+                >
+                  Save
+                </Button>
+                <Button
+                    disabled={!isModified}
+                    onClick={() => handleResetVersion(workflowVersion)}
+                    variant="secondary"
+                >
+                  Reset
+                </Button>
+              </ExcludeFromReadonlyUi>
               <IconButton
                 onClick={() => dispatch({ type: actions.TOGGLE_GRAPH_PANEL })}
               >
@@ -358,6 +360,7 @@ export default function Workflow() {
             options={{
               smoothScrolling: true,
               selectOnLineNumbers: true,
+              readOnly: READONLY_MODE_ENABLED,
               minimap: {
                 enabled: false,
               },

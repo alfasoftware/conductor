@@ -8,6 +8,7 @@ import Header from "./Header";
 import sharedStyles from "../styles";
 import { Helmet } from "react-helmet";
 import AddIcon from "@material-ui/icons/Add";
+import ExcludeFromReadonlyUi from "../../components/ExcludeFromReadonlyUi";
 
 const useStyles = makeStyles(sharedStyles);
 
@@ -112,15 +113,17 @@ export default function WorkflowDefinitions() {
       <Header tabIndex={0} loading={isFetching} />
 
       <div className={classes.tabContent}>
-        <div className={classes.buttonRow}>
-          <Button
-            component={NavLink}
-            path="/workflowDef"
-            startIcon={<AddIcon />}
-          >
-            New Workflow Definition
-          </Button>
-        </div>
+        <ExcludeFromReadonlyUi>
+          <div className={classes.buttonRow}>
+            <Button
+                component={NavLink}
+                path="/workflowDef"
+                startIcon={<AddIcon />}
+            >
+              New Workflow Definition
+            </Button>
+          </div>
+        </ExcludeFromReadonlyUi>
 
         {workflows && (
           <DataTable
