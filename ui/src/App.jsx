@@ -26,6 +26,7 @@ import CustomRoutes from "./plugins/CustomRoutes";
 import AppBarModules from "./plugins/AppBarModules";
 import CustomAppBarButtons from "./plugins/CustomAppBarButtons";
 import Workbench from "./pages/workbench/Workbench";
+import ExcludeFromReadonlyUi from "./components/ExcludeFromReadonlyUi";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,9 +70,11 @@ export default function App() {
           <Button component={NavLink} path="/taskQueue">
             Task Queues
           </Button>
-          <Button component={NavLink} path="/workbench">
-            Workbench
-          </Button>
+          <ExcludeFromReadonlyUi>
+            <Button component={NavLink} path="/workbench">
+              Workbench
+            </Button>
+          </ExcludeFromReadonlyUi>
           <CustomAppBarButtons />
 
           <div className={classes.toolbarRight}>
@@ -111,9 +114,11 @@ export default function App() {
           <Route exact path="/taskQueue/:name?">
             <TaskQueue />
           </Route>
-          <Route exact path="/workbench">
-            <Workbench />
-          </Route>
+          <ExcludeFromReadonlyUi>
+            <Route exact path="/workbench">
+              <Workbench />
+            </Route>
+          </ExcludeFromReadonlyUi>
           <Route exact path="/kitchen">
             <KitchenSink />
           </Route>

@@ -12,6 +12,7 @@ import { makeStyles } from "@material-ui/styles";
 import BulkActionModule from "./BulkActionModule";
 import executionsStyles from "./executionsStyles";
 import sharedStyles from "../styles";
+import {READONLY_MODE_ENABLED} from "../../components/ExcludeFromReadonlyUi";
 
 const useStyles = makeStyles({
   ...executionsStyles,
@@ -135,7 +136,7 @@ export default function ResultsTable({
           onSort={(column, sortDirection) => {
             setSort(column.id, sortDirection);
           }}
-          selectableRows
+          selectableRows={!READONLY_MODE_ENABLED}
           contextComponent={
             <BulkActionModule
               selectedRows={selectedRows}

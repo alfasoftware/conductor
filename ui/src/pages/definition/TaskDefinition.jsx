@@ -12,6 +12,9 @@ import ResetConfirmationDialog from "./ResetConfirmationDialog";
 import SaveTaskDialog from "./SaveTaskDialog";
 import { useTask } from "../../data/task";
 import { usePushHistory } from "../../components/NavLink";
+import ExcludeFromReadonlyUi, {
+  READONLY_MODE_ENABLED
+} from "../../components/ExcludeFromReadonlyUi";
 
 const useStyles = makeStyles({
   wrapper: {
@@ -130,24 +133,28 @@ export default function TaskDefinition() {
           {!_.isEmpty(jsonErrors) && <Pill color="red" label="Validation" />}
 
           <div className={classes.rightButtons}>
-            <Button
-              disabled={!_.isEmpty(jsonErrors) || !isModified}
-              onClick={handleOpenSave}
-            >
-              Save
-            </Button>
-            <Button
-              disabled={!isModified}
-              onClick={() => setResetDialog(true)}
-              variant="secondary"
-            >
-              Reset
-            </Button>
+            <ExcludeFromReadonlyUi>
+              <Button
+                  disabled={!_.isEmpty(jsonErrors) || !isModified}
+                  onClick={handleOpenSave}
+              >
+                Save
+              </Button>
+              <Button
+                  disabled={!isModified}
+                  onClick={() => setResetDialog(true)}
+                  variant="secondary"
+              >
+                Reset
+              </Button>
+
+            </ExcludeFromReadonlyUi>
           </div>
         </Toolbar>
         <Editor
           height="100%"
           width="100%"
+          readOnly={READONLY_MODE_ENABLED}
           theme="vs-light"
           language="json"
           value={taskJson}
@@ -158,6 +165,7 @@ export default function TaskDefinition() {
           onChange={handleChange}
           options={{
             selectOnLineNumbers: true,
+            readOnly: READONLY_MODE_ENABLED,
             minimap: {
               enabled: false,
             },
